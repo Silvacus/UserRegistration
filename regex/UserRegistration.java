@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 public class UserRegistration {
 	static String firstName;
 	static String lastName;
+	static String email;
 	static Scanner sc=new Scanner(System.in);
 
 	public static boolean matche(String regex,String input) {
@@ -48,11 +49,27 @@ public class UserRegistration {
 			}
 		}
 	}
-
 	
+	public static void setEmailId() {
+		boolean flag=true;
+		String pattern="^[a-zA-Z0-9]+([.+-_][a-zA-Z]+)?@[a-zA-Z0-9]+\\.[a-z]{2,4}(\\.[a-z]{2})?$";
+		while(flag) {
+			System.out.println("Enter the Email:");
+			String input=sc.nextLine();
+			if(matche(pattern,input)) {
+				email=input;
+				flag=false;
+			} 
+			else {
+				System.out.println("Enter mail in abc.xyz@bl.co.in format");
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to User Registration");
 		setFirstName();
 		setLastName();
+		setEmailId();
 	}
 }
